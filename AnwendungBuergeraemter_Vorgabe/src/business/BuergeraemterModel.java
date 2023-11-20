@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import fabrik.*;
+
 public class BuergeraemterModel {
 	
 	public BuergeraemterModel() {
@@ -24,9 +26,24 @@ public class BuergeraemterModel {
 	
 	public void schreibeBuergeraemterInCsvDatei() throws IOException {
 		
-		BufferedWriter bw = new BufferedWriter(new FileWriter("test.csv", true));
-		bw.write(this.getBuergeramt().gibBuergeramtZurueck(';'));
-		bw.close();
+		ExportCreator creator = new ConcreteCsvExportCreator();
+		ExportProduct product = creator.factoryMethod();
+		product.fuegeInDateiHinzu(this.buergeramt);
+		product.schliesseDatei();
+		
+		
 		
 	}
+	
+public void schreibeBuergeraemterInTxtDatei() throws IOException {
+		
+		ExportCreator creator = new ConcreteTxtExportCreator();
+		ExportProduct product = creator.factoryMethod();
+		product.fuegeInDateiHinzu(this.buergeramt);
+		product.schliesseDatei();
+		
+		
+		
+	}
+
 }

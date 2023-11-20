@@ -39,6 +39,10 @@ public class BuergeraemterControl {
 				baModel.schreibeBuergeraemterInCsvDatei();
 				
 			}
+			else if("txt".equals(typ)) {
+				baModel.schreibeBuergeraemterInTxtDatei();
+				
+			}
 			else {
 				baView.zeigeInformationsfensterAn("Noch nicht implementiert!");
 			}

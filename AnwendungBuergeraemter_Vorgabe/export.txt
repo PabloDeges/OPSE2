@@ -1,0 +1,5 @@
+Daten des Bürgeramts
+Name des Bürgeramts: Amt1
+Öffnungszeiten: 8.0 - 16.0
+Strasse und Hausnummer des Bürgeramts: Amtstrasse 5
+Dienstleistungen des Bürgeramts: csv, pass
