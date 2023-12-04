@@ -3,12 +3,51 @@ package business;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import fabrik.*;
+import ownUtil.Observable;
+import ownUtil.Observer;
 
-public class BuergeraemterModel {
+public class BuergeraemterModel implements Observable{
 	
-	public BuergeraemterModel() {
+	ArrayList<Observer> observers = new ArrayList<Observer>();
+
+	@Override
+	public void addObserver(Observer o) {
+		observers.add(o);
+		
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		observers.remove(o);
+		
+	}
+
+	@Override
+	public void notifyObservers() {
+		
+		for(Observer o : observers) {
+			o.update();
+		}
+		
+	}
+	
+	
+	
+	private static BuergeraemterModel theInstance = null;
+	
+	public static BuergeraemterModel getInstance() {
+		
+		if (theInstance == null)
+			theInstance = new BuergeraemterModel();
+		return theInstance;
+		
+	}
+	
+	
+	private BuergeraemterModel() {
 	}
 
 	

@@ -1,4 +1,4 @@
-package gui;
+package guiBuergeraemter;
 
 import java.io.IOException;
 
@@ -6,14 +6,17 @@ import business.BuergeraemterModel;
 import business.Buergeramt;
 import javafx.stage.Stage;
 
-public class BuergeraemterControl {
+import ownUtil.Observer;
+
+public class BuergeraemterControl implements Observer{
 	
 	private BuergeraemterView baView;
 	private BuergeraemterModel baModel;
 	
 	public BuergeraemterControl(Stage stage) {
-		baModel = new BuergeraemterModel();
+		baModel = BuergeraemterModel.getInstance();
 		baView = new BuergeraemterView(this, stage, baModel);
+		baModel.addObserver(this);
 	}
 	
 	
@@ -25,7 +28,8 @@ public class BuergeraemterControl {
    	            Float.parseFloat(offenBis),
     		    adresse,
     		    dienstleistungen));
-    		baView.zeigeInformationsfensterAn("Das Bürgeramt wurde aufgenommen!");
+    		//baView.zeigeInformationsfensterAn("Das Bürgeramt wurde aufgenommen!");
+    		
        	}
        	catch(Exception exc){
        		baView.zeigeFehlermeldungsfensterAn("Kann nicht aufgenommen werden");
@@ -54,6 +58,11 @@ public class BuergeraemterControl {
 		catch (Exception e) {
 			baView.zeigeFehlermeldungsfensterAn(e.getMessage());
 		}
+		
+	}
+	
+	public void update() {
+		baView.zeigeBuergeraemterAn();
 		
 	}
 	
