@@ -1,5 +1,7 @@
 package business;
 
+import java.util.ArrayList;
+
 public class Buergeramt {
 	
 	// Name des Buergeramtes
@@ -10,15 +12,28 @@ public class Buergeramt {
     // Strasse und Hausnummer des Buergeramtes
     private String strasseHNr;
     // Dienstleistungen des Buergeramtes
-    private String[] dienstleistungen;
+    private ArrayList<String> dienstleistungen;
 
     public Buergeramt(String name, float geoeffnetVon, float geoeffnetBis,
     	String strasseHNr, String[] dienstleistungen){
+    	
+    	if(dienstleistungen == null) {
+    		throw new IllegalArgumentException();
+    	}
+    	
    		this.name = name;
   	    this.geoeffnetVon = geoeffnetVon;
    	    this.geoeffnetBis = geoeffnetBis;
    	    this.strasseHNr = strasseHNr;
-   	    this.dienstleistungen = dienstleistungen;
+   	    this.dienstleistungen = arrayToList(dienstleistungen);
+    }
+    
+    public ArrayList<String> arrayToList(String[] arr) {
+    	ArrayList<String> aList = new ArrayList<String>();
+    	for(int i = 0; i < arr.length; i++) {
+    		aList.add(arr[i]);
+    	}
+    	return aList;
     }
     
 	public String getName() {
@@ -53,21 +68,21 @@ public class Buergeramt {
 		this.strasseHNr = strasseHNr;
 	}
 
-	public String[] getDienstleistungen() {
+	public ArrayList<String> getDienstleistungen() {
 		return dienstleistungen;
 	}
 
-	public void setDienstleistungen(String[] dienstleistungen) {
+	public void setDienstleistungen(ArrayList<String> dienstleistungen) {
 		this.dienstleistungen = dienstleistungen;
 	}
 	
 	public String getDienstleistungenAlsString(char trenner) {
 		String ergebnis = "";
-		int i = 0;
-		for(i = 0; i < this.getDienstleistungen().length - 1; i++) {
-			ergebnis = ergebnis + this.getDienstleistungen()[i] + trenner; 
+
+		for(String d : dienstleistungen) {
+			ergebnis = ergebnis + d + trenner; 
 		}
-		return ergebnis	+ this.getDienstleistungen()[i];
+		return ergebnis;
 	}
 	
 	public String gibBuergeramtZurueck(char trenner){

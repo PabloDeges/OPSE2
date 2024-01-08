@@ -34,7 +34,7 @@ public class BuergeraemterModel implements Observable{
 		
 	}
 	
-	
+	private ArrayList<Buergeramt> buergeramt = new ArrayList<Buergeramt>();
 	
 	private static BuergeraemterModel theInstance = null;
 	
@@ -51,17 +51,18 @@ public class BuergeraemterModel implements Observable{
 	}
 
 	
-	 public Buergeramt getBuergeramt() {
+	 public  ArrayList<Buergeramt> getBuergeramt() {
 		return buergeramt;
 	}
 
 
-	public void setBuergeramt(Buergeramt buergeramt) {
-		this.buergeramt = buergeramt;
+	public void setBuergeramt( Buergeramt buergeramt) {
+		this.buergeramt.add(buergeramt);
+		
 	}
 
 
-	private Buergeramt buergeramt;
+	
 	
 	public void schreibeBuergeraemterInCsvDatei() throws IOException {
 		

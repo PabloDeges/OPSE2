@@ -147,22 +147,18 @@ public class BuergeraemterView {
 	        } 
    	    });  
 	    
-	    mnItmCsvExport.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-        	    baControl.schreibeBuergeraemterInDatei("csv");
-	    }});
+	    mnItmCsvExport.setOnAction(
+            (e)-> {baControl.schreibeBuergeraemterInDatei("csv");});
 	    
-	    mnItmTxtExport.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-        	    baControl.schreibeBuergeraemterInDatei("txt");
-	    }});
+	    mnItmTxtExport.setOnAction((e)-> {baControl.schreibeBuergeraemterInDatei("txt");});
     }
    void zeigeBuergeraemterAn(){
    	if(baModel.getBuergeramt() != null){
-   		txtAnzeige.setText(
-   				baModel.getBuergeramt().gibBuergeramtZurueck(' '));
+   		String text = "";
+   		for(Buergeramt b : baModel.getBuergeramt())
+				text += b.gibBuergeramtZurueck(' ');
+   		txtAnzeige.setText(text);
+   				
    	}
    	else{
    		zeigeInformationsfensterAn("Bisher wurde kein Bürgeramt aufgenommen!");

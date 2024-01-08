@@ -3,6 +3,7 @@ package fabrik;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import business.Buergeramt;
 
@@ -13,12 +14,15 @@ public class ConcreteTxtExportProduct extends ExportProduct{
 		bw = new BufferedWriter(new FileWriter("export.txt"));
 	}
 
-	public void fuegeInDateiHinzu(Buergeramt ba) throws IOException {
-		bw.write("Daten des Bürgeramts\n");
-		bw.write("Name des Bürgeramts: "  +  ba.getName() + "\n");
-		bw.write("Öffnungszeiten: "  +  ba.getGeoeffnetVon() + " - " + ba.getGeoeffnetBis()+ "\n");
-		bw.write("Strasse und Hausnummer des Bürgeramts: "  +  ba.getStrasseHNr()+ "\n");
-		bw.write("Dienstleistungen des Bürgeramts: " + ba.getDienstleistungenAlsString('-')+ "\n");
+	public void fuegeInDateiHinzu(ArrayList<Buergeramt> ba) throws IOException {
+		
+		for(Buergeramt b : ba) {
+			bw.write("Daten des Bürgeramts\n");
+			bw.write("Name des Bürgeramts: "  +  b.getName() + "\n");
+			bw.write("Öffnungszeiten: "  +  b.getGeoeffnetVon() + " - " + b.getGeoeffnetBis()+ "\n");
+			bw.write("Strasse und Hausnummer des Bürgeramts: "  +  b.getStrasseHNr()+ "\n");
+			bw.write("Dienstleistungen des Bürgeramts: " + b.getDienstleistungenAlsString('-')+ "\n");
+		}
 		
 
 		
