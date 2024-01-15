@@ -2,8 +2,8 @@ package guiBuergeraemter;
 
 import java.io.IOException;
 
-import business.BuergeraemterModel;
-import business.Buergeramt;
+import businessBuergeramt.BuergeraemterModel;
+import businessBuergeramt.Buergeramt;
 import javafx.stage.Stage;
 
 import ownUtil.Observer;

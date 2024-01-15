@@ -4,8 +4,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import business.BuergeraemterModel;
-import business.Buergeramt;
+import businessBuergeramt.BuergeraemterModel;
+import businessBuergeramt.Buergeramt;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

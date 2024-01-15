@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import business.Buergeramt;
+import businessBuergeramt.Buergeramt;
 
 public class ConcreteCsvExportProduct extends ExportProduct {
 	

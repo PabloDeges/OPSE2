@@ -1,6 +1,6 @@
 package guiBuergeraemter;
    
-import business.Buergeramt;
+import businessBuergeramt.Buergeramt;
 import javafx.event.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
